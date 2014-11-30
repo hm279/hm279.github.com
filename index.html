@@ -20,18 +20,6 @@
   <link rel="alternate" href="/atom.xml" title="hm279" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-5353535-6']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
 </head>
 
 
@@ -42,13 +30,13 @@
   <nav id="main-nav">
     <ul>
       
-      <li><a href="/">首页</a></li>
+      <li><a href="/">home</a></li>
       
-      <li><a href="/archives">文章归档</a></li>
+      <li><a href="/archives">archives</a></li>
       
-      <li><a href="/links">友情链接</a></li>
+      <li><a href="https://github.com/hm279">github</a></li>
       
-      <li><a href="/about">关于</a></li>
+      <li><a href="/about">about</a></li>
       
     </ul>
     <div class="clearfix"></div>
@@ -73,7 +61,7 @@
     <div class="entry">
       
         <p>sample of Handler,Looper,Thread</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FtpClientDTP</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>{</div><div class="line"></div><div class="line">    Handler mUIHandler;</div><div class="line">    Handler mHandler;</div><div class="line">    Looper mLooper;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="title">FtpClientDTP</span>(Handler mUIHandler) {</div><div class="line">        <span class="keyword">this</span>.mUIHandler = mUIHandler;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        Looper.prepare();</div><div class="line"></div><div class="line">        mHandler = <span class="keyword">new</span> Handler() {</div><div class="line">            <span class="annotation">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line"></div><div class="line">            }</div><div class="line">        };</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            mLooper = Looper.myLooper();</div><div class="line">            notifyAll();</div><div class="line">        }</div><div class="line">        Looper.loop();</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">waitUntilReady</span>() {</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            <span class="keyword">while</span> (mLooper == <span class="keyword">null</span>) {</div><div class="line">                <span class="keyword">try</span> {</div><div class="line">                    wait();</div><div class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                    e.printStackTrace();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>{</div><div class="line"></div><div class="line">    Handler mUIHandler;</div><div class="line">    Handler mHandler;</div><div class="line">    Looper mLooper;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="title">MyThread</span>(Handler mUIHandler) {</div><div class="line">        <span class="keyword">this</span>.mUIHandler = mUIHandler;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        Looper.prepare();</div><div class="line"></div><div class="line">        mHandler = <span class="keyword">new</span> Handler() {</div><div class="line">            <span class="annotation">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line"></div><div class="line">            }</div><div class="line">        };</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            mLooper = Looper.myLooper();</div><div class="line">            notifyAll();</div><div class="line">        }</div><div class="line">        Looper.loop();</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">waitUntilReady</span>() {</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            <span class="keyword">while</span> (mLooper == <span class="keyword">null</span>) {</div><div class="line">                <span class="keyword">try</span> {</div><div class="line">                    wait();</div><div class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                    e.printStackTrace();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
 
 
       
