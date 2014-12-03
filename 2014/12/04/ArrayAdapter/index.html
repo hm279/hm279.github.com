@@ -3,8 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hm279 › 归档：2014/12</title>
+  <title>hm279</title>
   <meta name="author" content="ming huang">
+  
+  <meta name="description" content="ArrayAdapter source
+1void init(Context context, int resource, int textViewResourceId, List&amp;lt;T&amp;gt; objects) {}
+
+ArrayAdapter need four var. context a">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -45,16 +50,12 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2014/12</h2>
-
-
-<article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   <div class="post-content">
     <header>
       
   
-    <h1 class="title"><a href="/2014/12/04/ArrayAdapter/"></a></h1>
+    <h1 class="title"></h1>
   
 
       
@@ -78,63 +79,36 @@
       
     </div>
     
+    <footer>
+      <div class="alignleft">
       
+      
+      </div>
+      <div class="clearfix"></div>
+    </footer>
     
   </div>
 </article>
 
 
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"null"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
       
   
-    <h1 class="title"><a href="/2014/12/01/Android-Handler-Use/">Android Handler&#39;Use</a></h1>
-  
-
-      
-      <time datetime="2014-11-30T17:04:36.000Z">12月 1 2014</time>
-      
-    </header>
-    <div class="entry">
-      
-        <p>sample of Handler,Looper,Thread</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>{</div><div class="line"></div><div class="line">    Handler mUIHandler;</div><div class="line">    Handler mHandler;</div><div class="line">    Looper mLooper;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="title">MyThread</span>(Handler mUIHandler) {</div><div class="line">        <span class="keyword">this</span>.mUIHandler = mUIHandler;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        Looper.prepare();</div><div class="line"></div><div class="line">        mHandler = <span class="keyword">new</span> Handler() {</div><div class="line">            <span class="annotation">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line"></div><div class="line">            }</div><div class="line">        };</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            mLooper = Looper.myLooper();</div><div class="line">            notifyAll();</div><div class="line">        }</div><div class="line">        Looper.loop();</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">waitUntilReady</span>() {</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            <span class="keyword">while</span> (mLooper == <span class="keyword">null</span>) {</div><div class="line">                <span class="keyword">try</span> {</div><div class="line">                    wait();</div><div class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                    e.printStackTrace();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<div class="pagination">
-  <table width='100%'>
-    <tbody>
-    <tr>
-      <td width='120' align='left'>
-        
-      </td>
-      <td width='auto' align='center'>
-          <a href="/archives/">文章归档</a>
-      </td>
-      <td width='120' align='right'>
-        
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-
-
+</section>
 
 </div></div>
     <div class="clearfix"></div>
