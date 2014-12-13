@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hm279 › 归档：2014/12</title>
+  <title>hm279</title>
   <meta name="author" content="ming huang">
+  
+  <meta name="description" content="SQLiteOpenHelper.class
+a helper class, getting a SQLiteDatabase object.Usually we get a SQLiteDatabase object from a SQLiteOpenHelper object,using get">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -45,54 +48,12 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2014/12</h2>
-
-
-<article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   <div class="post-content">
     <header>
       
   
-    <h1 class="title"><a href="/2014/12/13/getDataBackFromDialogFragment/"></a></h1>
-  
-
-      
-      <time datetime="2014-12-13T12:54:10.000Z">12月 13 2014</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="Get_Events(or_data?)_back_from_DialogFragment_to_Fragment">Get Events(or data?) back from DialogFragment to Fragment</h1>
-<p>the <em>develop.android.com</em> tells us how to <em>Passing Events Back to the Dialog’s Host</em></p>
-<p>Look at <a href="http://developer.android.com/guide/topics/ui/dialogs.html#PassingEvents" target="_blank" rel="external">here</a>. It shows how to <em>Passing Events Back to the an Activity</em>, but i want to Passing Events Back to an Fragment.</p>
-<p>I found a way to work it out. The following code works fine for me.</p>
-<hr>
-<p>The DialogFragment’s key code </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDialogFragment</span> <span class="keyword">extends</span> <span class="title">DialogFragment</span> </span>{</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDialogListener</span> </span>{</div><div class="line">        <span class="comment">//I use bundle to send data back to Fragment.</span></div><div class="line">        <span class="comment">//I don't know whether it is recommended or not</span></div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDialogPositiveClick</span>(Bundle bundle);</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line">MyDialogListener mListener;</div><div class="line"></div><div class="line"><span class="annotation">@override</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span>(Activity activity) {</div><div class="line">    <span class="keyword">super</span>.onAttach(activity);</div><div class="line"></div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        mListener = (MyDialogListener) getTargetFragment();</div><div class="line">    } <span class="keyword">catch</span>(ClassCastException e) {</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ClassCastException(getTargetFragment().toString()) + <span class="string">" must implement MyDialogListener"</span>;</div><div class="line">    }</div><div class="line">    <span class="comment">//...</span></div><div class="line">}</div></pre></td></tr></table></figure>
-
-<hr>
-<p>The Fragment’s key code</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span></span></div><div class="line">                        <span class="keyword">implements</span> <span class="title">MyDialogFragment</span>.<span class="title">MyDialogListener</span> {</div><div class="line">                       </div><div class="line">    <span class="annotation">@override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDialogPositiveClick</span>(Bundle bundle) {</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMyDialog</span>() {</div><div class="line">        MyDialogFragment dialog = <span class="keyword">new</span> MyDialogFragment();</div><div class="line">        <span class="comment">//REQUEST_CODE, not care about it here, it's an int</span></div><div class="line">        dialog.setTargetFragment(<span class="keyword">this</span>, REQUEST_CODE);</div><div class="line">        dialog.show(getFragmentManager(), <span class="keyword">null</span>);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2014/12/13/SQLiteOpenHelper/"></a></h1>
+    <h1 class="title"></h1>
   
 
       
@@ -149,104 +110,36 @@
       
     </div>
     
+    <footer>
+      <div class="alignleft">
       
+      
+      </div>
+      <div class="clearfix"></div>
+    </footer>
     
   </div>
 </article>
 
 
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"null"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
       
   
-    <h1 class="title"><a href="/2014/12/12/ArrayAdapter/"></a></h1>
-  
-
-      
-      <time datetime="2014-12-11T17:28:40.000Z">12月 12 2014</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="ArrayAdapter_source">ArrayAdapter source</h1>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> init(Context context, <span class="keyword">int</span> resource, <span class="keyword">int</span> textViewResourceId, List&lt;T&gt; objects) {</div><div class="line">    mContext = context;</div><div class="line">    mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">    mResource = mDropDownResource = resource;</div><div class="line">    mObjects = objects;</div><div class="line">    mFieldId = textViewResourceId;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>ArrayAdapter need four var. <strong>context</strong> and <strong>resouce</strong> must pass in from  constructor .<br>if <strong>textViewResourceId</strong> and <strong>objects</strong> don’t  pass in, <strong>textViewResourceId</strong> default to 0,  <strong>objects</strong> default to:<br><code>new ArrayList&lt;T&gt;();</code></p>
-<p><strong>resource</strong> should be your customize List_item layout<br><strong>textViewResourceId</strong> should be a TextView’ID, which is in your “List_item”  layout</p>
-<hr>
-<p>core code show below</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> View <span class="title">createViewFromResource</span>(<span class="keyword">int</span> position, View convertView, ViewGroup parent,</div><div class="line">        <span class="keyword">int</span> resource) {</div><div class="line">    View view;</div><div class="line">    TextView text;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) {</div><div class="line">        view = mInflater.inflate(resource, parent, <span class="keyword">false</span>);</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        view = convertView;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        <span class="keyword">if</span> (mFieldId == <span class="number">0</span>) {</div><div class="line">            <span class="comment">//  If no custom field is assigned, assume the whole resource is a TextView</span></div><div class="line">            text = (TextView) view;</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            <span class="comment">//  Otherwise, find the TextView field within the layout</span></div><div class="line">            text = (TextView) view.findViewById(mFieldId);</div><div class="line">        }</div><div class="line">    } <span class="keyword">catch</span> (ClassCastException e) {</div><div class="line">        Log.e(<span class="string">"ArrayAdapter"</span>, <span class="string">"You must supply a resource ID for a TextView"</span>);</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</div><div class="line">                <span class="string">"ArrayAdapter requires the resource ID to be a TextView"</span>, e);</div><div class="line">    }</div><div class="line"></div><div class="line">    T item = getItem(position);</div><div class="line">    <span class="keyword">if</span> (item <span class="keyword">instanceof</span> CharSequence) {</div><div class="line">        text.setText((CharSequence)item);</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        text.setText(item.toString());</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">return</span> view;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>so if you do not pass in a <strong>textViewResourceId</strong>. Then</p>
-<blockquote>
-<p>find the TextView field within the layout<br><strong>so if not pass in textViewResourceId, then resource layout must be only a TextView layout(not contain LinearLayout)</strong></p>
-</blockquote>
-<p>getView() and getDropDownView() method in <strong>ArrayAdapter</strong> both call createViewFromResource() method</p>
-<hr>
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2014/12/01/Android-Handler-Use/">Android Handler&#39;Use</a></h1>
-  
-
-      
-      <time datetime="2014-11-30T17:04:36.000Z">12月 1 2014</time>
-      
-    </header>
-    <div class="entry">
-      
-        <p>sample of Handler,Looper,Thread</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>{</div><div class="line"></div><div class="line">    Handler mUIHandler;</div><div class="line">    Handler mHandler;</div><div class="line">    Looper mLooper;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="title">MyThread</span>(Handler mUIHandler) {</div><div class="line">        <span class="keyword">this</span>.mUIHandler = mUIHandler;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        Looper.prepare();</div><div class="line"></div><div class="line">        mHandler = <span class="keyword">new</span> Handler() {</div><div class="line">            <span class="annotation">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line"></div><div class="line">            }</div><div class="line">        };</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            mLooper = Looper.myLooper();</div><div class="line">            notifyAll();</div><div class="line">        }</div><div class="line">        Looper.loop();</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">waitUntilReady</span>() {</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            <span class="keyword">while</span> (mLooper == <span class="keyword">null</span>) {</div><div class="line">                <span class="keyword">try</span> {</div><div class="line">                    wait();</div><div class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                    e.printStackTrace();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<div class="pagination">
-  <table width='100%'>
-    <tbody>
-    <tr>
-      <td width='120' align='left'>
-        
-      </td>
-      <td width='auto' align='center'>
-          <a href="/archives/">文章归档</a>
-      </td>
-      <td width='120' align='right'>
-        
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-
-
+</section>
 
 </div></div>
     <div class="clearfix"></div>
