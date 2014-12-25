@@ -7,8 +7,8 @@
   <meta name="author" content="ming huang">
   
   <meta name="description" content="Get Events(or data?) back from DialogFragment to Fragment
-the develop.android.com tells us how to Passing Events Back to the Dialog’s Host
-Look at her">
+Two Fragments should never communicate directlylook at hereso this method should avoid?
+the ">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -58,12 +58,13 @@ Look at her">
   
 
       
-      <time datetime="2014-12-13T12:54:10.000Z">12月 13 2014</time>
+      <time datetime="2014-12-25T09:25:17.000Z">12月 25 2014</time>
       
     </header>
     <div class="entry">
       
         <h1 id="Get_Events(or_data?)_back_from_DialogFragment_to_Fragment">Get Events(or data?) back from DialogFragment to Fragment</h1>
+<p><em>Two Fragments should never communicate directly</em><br>look at <a href="http://developer.android.com/training/basics/fragments/communicating.html" target="_blank" rel="external">here</a><br><em>so this method should avoid</em>?</p>
 <p>the <em>develop.android.com</em> tells us how to <em>Passing Events Back to the Dialog’s Host</em></p>
 <p>Look at <a href="http://developer.android.com/guide/topics/ui/dialogs.html#PassingEvents" target="_blank" rel="external">here</a>. It shows how to <em>Passing Events Back to the an Activity</em>, but i want to Passing Events Back to an Fragment.</p>
 <p>I found a way to work it out. The following code works fine for me.</p>
