@@ -6,10 +6,9 @@
   <title>hm279</title>
   <meta name="author" content="ming huang">
   
-  <meta name="description" content="about
-name:huang ming
-email:hm279@sina.com
-location:shenzhen">
+  <meta name="description" content="building a suggestion table for SearchView
+The system understands several columns, but only two are required.
+_ID(required)A unique integer row ID for">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -50,7 +49,7 @@ location:shenzhen">
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="page">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   <div class="post-content">
     <header>
       
@@ -59,13 +58,25 @@ location:shenzhen">
   
 
       
+      <time datetime="2015-01-26T08:57:42.000Z">1月 26 2015</time>
+      
     </header>
     <div class="entry">
       
-        <h1 id="about">about</h1>
-<p>name:huang ming</p>
-<p>email:hm279@sina.com</p>
-<p>location:shenzhen</p>
+        <h1 id="building_a_suggestion_table_for_SearchView">building a suggestion table for SearchView</h1>
+<p>The system understands several columns, but only two are required.</p>
+<p><code>_ID</code>(required)<br>A unique integer row ID for each suggestion.<br>required for a ListView</p>
+<p><code>SUGGEST_COLUMN_TEXT_1</code>(required)<br>A string<br>required for presenting as a suggestion.</p>
+<p><code>SUGGEST_COLUMN_TEXT_2</code><br>A string.<br>that is for two-line format suggestion as a second, smaller line.</p>
+<p><code>SUGGEST_COLUMN_ICON_1</code><br>A drawable resource, content, or file URI string.<br>icon-plus-text format suggestion, with the drawable icon on the left side.</p>
+<p><code>SUGGEST_COLUMN_ICON_2</code><br>A drawable resource, content, or file URI string.<br>icon-plus-text format suggestion, with the drawable icon on the right side.</p>
+<p><code>SUGGEST_COLUMN_INTENT_ACTION</code><br>An intent action string.<br>in searchable configuration, <em>android:searchSuggestIntentAction</em> field is the default value for all suggestions.</p>
+<p><code>SUGGEST_COLUMN_INTENT_DATA</code><br>A data URI string.<br>in searchable configuration, <em>android:searchSuggestIntentData</em> field is the default value for all suggestions.</p>
+<p><code>SUGGEST_COLUMN_INTENT_DATA_ID</code><br>A URI path string.<br>“/” and this value is appended to the data field in the intent.</p>
+<p><code>SUGGEST_COLUMN_INTENT_EXTRA_DATA</code><br>Arbitrary data.<br>This column allows suggestions to provide additional data that is included as an extra in the intent’s EXTRA_DATA_KEY key.</p>
+<p><code>SUGGEST_COLUMN_QUERY</code><br>required if suggestion’s action is ACTION_SEARCH, optional otherwise.<br>This is the data that is used when forming the suggestion’s query, included as an extra in the intent’s QUERY key.</p>
+<p><code>SUGGEST_COLUMN_SHORTCUT_ID</code><br>Only used when providing suggestions for Quick Search Box.</p>
+<p><code>SUGGEST_COLUMN_SPINNER_WHILE_REFRESHING</code><br>Only used when providing suggestions for Quick Search Box.</p>
 
       
     </div>
