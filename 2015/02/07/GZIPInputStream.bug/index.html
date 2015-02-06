@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hm279 › 归档：2015</title>
+  <title>hm279</title>
   <meta name="author" content="ming huang">
+  
+  <meta name="description" content="One bug of GZIPInputStream in android 5.0
+When I use GZIPInputStream to decompress gzip file in my app, I found that it work on android 4.3, but not w">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -45,16 +48,12 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2015</h2>
-
-
-<article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   <div class="post-content">
     <header>
       
   
-    <h1 class="title"><a href="/2015/02/07/GZIPInputStream.bug/"></a></h1>
+    <h1 class="title"></h1>
   
 
       
@@ -79,161 +78,36 @@
       
     </div>
     
+    <footer>
+      <div class="alignleft">
       
+      
+      </div>
+      <div class="clearfix"></div>
+    </footer>
     
   </div>
 </article>
 
 
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"null"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
       
   
-    <h1 class="title"><a href="/2015/01/26/addToBackStack/"></a></h1>
-  
-
-      
-      <time datetime="2015-01-26T09:03:20.000Z">1月 26 2015</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="why_addToBackStack()_is_not_working">why addToBackStack() is not working</h1>
-<p>Because I use an ActionBarActivity from support v7 library,<br>but I don’t use the FragmentManager from support v4 library.<br><strong>So when I use a support library, then I should also use support library corresponding.</strong><br>like:<br>Fragmentmanager<br>FragmentTransaction<br>Fragment<br>. . .</p>
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2015/01/26/search/"></a></h1>
-  
-
-      
-      <time datetime="2015-01-26T08:57:42.000Z">1月 26 2015</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="building_a_suggestion_table_for_SearchView">building a suggestion table for SearchView</h1>
-<p>The system understands several columns, but only two are required.</p>
-<p><code>_ID</code>(required)<br>A unique integer row ID for each suggestion.<br>required for a ListView</p>
-<p><code>SUGGEST_COLUMN_TEXT_1</code>(required)<br>A string<br>required for presenting as a suggestion.</p>
-<p><code>SUGGEST_COLUMN_TEXT_2</code><br>A string.<br>that is for two-line format suggestion as a second, smaller line.</p>
-<p><code>SUGGEST_COLUMN_ICON_1</code><br>A drawable resource, content, or file URI string.<br>icon-plus-text format suggestion, with the drawable icon on the left side.</p>
-<p><code>SUGGEST_COLUMN_ICON_2</code><br>A drawable resource, content, or file URI string.<br>icon-plus-text format suggestion, with the drawable icon on the right side.</p>
-<p><code>SUGGEST_COLUMN_INTENT_ACTION</code><br>An intent action string.<br>in searchable configuration, <em>android:searchSuggestIntentAction</em> field is the default value for all suggestions.</p>
-<p><code>SUGGEST_COLUMN_INTENT_DATA</code><br>A data URI string.<br>in searchable configuration, <em>android:searchSuggestIntentData</em> field is the default value for all suggestions.</p>
-<p><code>SUGGEST_COLUMN_INTENT_DATA_ID</code><br>A URI path string.<br>“/” and this value is appended to the data field in the intent.</p>
-<p><code>SUGGEST_COLUMN_INTENT_EXTRA_DATA</code><br>Arbitrary data.<br>This column allows suggestions to provide additional data that is included as an extra in the intent’s EXTRA_DATA_KEY key.</p>
-<p><code>SUGGEST_COLUMN_QUERY</code><br>required if suggestion’s action is ACTION_SEARCH, optional otherwise.<br>This is the data that is used when forming the suggestion’s query, included as an extra in the intent’s QUERY key.</p>
-<p><code>SUGGEST_COLUMN_SHORTCUT_ID</code><br>Only used when providing suggestions for Quick Search Box.</p>
-<p><code>SUGGEST_COLUMN_SPINNER_WHILE_REFRESHING</code><br>Only used when providing suggestions for Quick Search Box.</p>
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2015/01/12/goodPaperForDictionary/"></a></h1>
-  
-
-      
-      <time datetime="2015-01-11T17:15:41.000Z">1月 12 2015</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="some_good_papers_I_found_in_developing_a_Dictionary_app">some good papers I found in developing a Dictionary app</h1>
-<p><a href="http://blog.andresteingress.com/2011/09/30/android-quick-tip-using-sqlite-fts-tables/" target="_blank" rel="external">Android Quick Tip: Using SQLite FTS Tables</a><br><a href="http://www.sqlite.org/fts3.html" target="_blank" rel="external">SQLite FTS3</a></p>
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2015/01/11/goodPaperForFTP/"></a></h1>
-  
-
-      
-      <time datetime="2015-01-11T12:22:15.000Z">1月 11 2015</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="I_just_want_to_speed_up_the_download/upload_ratio_in_LAN">I just want to speed up the download/upload ratio in LAN</h1>
-<h2 id="something_is_useful_for_me_to_wirte_down">something is useful for me to wirte down</h2>
-<p><a href="http://stackoverflow.com/questions/3651737/why-the-odd-performance-curve-differential-between-bytebuffer-allocate-and-byt" target="_blank" rel="external">How ByteBuffer works and why Direct (Byte)Buffers are the only truly useful now</a><br><a href="http://nadeausoftware.com/articles/2008/02/java_tip_how_read_files_quickly#FileChannelwithdirectByteBufferandbytearraygets" target="_blank" rel="external">Java tip: How to read files quickly</a><br><a href="http://stackoverflow.com/questions/7651528/java-nio-transferfrom-until-end-of-stream" target="_blank" rel="external">Java NIO: transferFrom until end of stream</a></p>
-<h2 id="Google_‘fastest_way_to_copy_file_java’_to_find_out">Google ‘fastest way to copy file java’ to find out</h2>
-<p><a href="http://baptiste-wicht.com/posts/2010/08/file-copy-in-java-benchmark.html" target="_blank" rel="external">File copy in Java - Benchmark</a></p>
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<div class="pagination">
-  <table width='100%'>
-    <tbody>
-    <tr>
-      <td width='120' align='left'>
-        
-      </td>
-      <td width='auto' align='center'>
-          <a href="/archives/">文章归档</a>
-      </td>
-      <td width='120' align='right'>
-        
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-
-
+</section>
 
 </div></div>
     <div class="clearfix"></div>
