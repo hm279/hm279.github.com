@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hm279 › 第 2 页 › 归档</title>
+  <meta name="author" content="ming huang">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="hm279"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="hm279" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">hm279</a></h1>
+  <h2 id="header-h2">Hail Open Source</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">home</a></li>
+      
+      <li><a href="/archives">archives</a></li>
+      
+      <li><a href="https://github.com/hm279">github</a></li>
+      
+      <li><a href="/about/about.html">about</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">归档</h2>
+
+
+<article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/12/01/Android-Handler-Use/">Android Handler&#39;Use</a></h1>
+  
+
+      
+      <time datetime="2014-11-30T17:04:36.000Z">12月 1 2014</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>sample of Handler,Looper,Thread</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>{</div><div class="line"></div><div class="line">    Handler mUIHandler;</div><div class="line">    Handler mHandler;</div><div class="line">    Looper mLooper;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="title">MyThread</span>(Handler mUIHandler) {</div><div class="line">        <span class="keyword">this</span>.mUIHandler = mUIHandler;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        Looper.prepare();</div><div class="line"></div><div class="line">        mHandler = <span class="keyword">new</span> Handler() {</div><div class="line">            <span class="annotation">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line"></div><div class="line">            }</div><div class="line">        };</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            mLooper = Looper.myLooper();</div><div class="line">            notifyAll();</div><div class="line">        }</div><div class="line">        Looper.loop();</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">waitUntilReady</span>() {</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">            <span class="keyword">while</span> (mLooper == <span class="keyword">null</span>) {</div><div class="line">                <span class="keyword">try</span> {</div><div class="line">                    wait();</div><div class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                    e.printStackTrace();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+<div class="pagination">
+  <table width='100%'>
+    <tbody>
+    <tr>
+      <td width='120' align='left'>
+        
+        <div class="alignleft">
+          <a href="/archives/" class="alignleft prev">‹ 上一页</a>
+        </div>
+        
+      </td>
+      <td width='auto' align='center'>
+          <a href="/archives/">文章归档</a>
+      </td>
+      <td width='120' align='right'>
+        
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 ming huang
+  
+  </p>
+  <p>
+    Theme By <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>
