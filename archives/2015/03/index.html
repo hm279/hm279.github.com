@@ -54,6 +54,37 @@
     <header>
       
   
+    <h1 class="title"><a href="/2015/03/20/ListView-Max-Item/"></a></h1>
+  
+
+      
+      <time datetime="2015-03-20T03:05:19.000Z">3月 20 2015</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="About_ListView’s_Maximal_Item_View">About ListView’s Maximal Item View</h1>
+<p>Adapter A: set the size of item views to Integer.MAX_VALUE<br>Adapter B: set the size of item views to Integer.MAX_VALUE<br>Listview A: has a HeaderView.<br>Listview B: no HeaderView, no FooterView.</p>
+<p>Listview A setAdapter to Adapter A, the result is non item view to show, it’s empty.<br>Listview B setAdapter to Adapter B, the result is good, shows item views correctly.</p>
+<p>Then,<br>Adapter A: set the size of item views to Integer.MAX_VALUE - 1, Listview A shows items correctly.</p>
+<p>I think the max item views of Listview is up to MAX_VALUE, and the Headerview will be counted as one view. FooterView should be the same as HeaderView.</p>
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+<article class="post">
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2015/03/14/md-navigation-drawer/"></a></h1>
   
 
