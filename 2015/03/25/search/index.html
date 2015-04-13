@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hm279</title>
+  <meta name="author" content="ming huang">
+  
+  <meta name="description" content="building a suggestion table for SearchView
+The system understands several columns, but only two are required.
+_ID(required)A unique integer row ID for">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="hm279"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="hm279" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">hm279</a></h1>
+  <h2 id="header-h2">Hail Open Source</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">home</a></li>
+      
+      <li><a href="/archives">archives</a></li>
+      
+      <li><a href="https://github.com/hm279">github</a></li>
+      
+      <li><a href="/about/about.html">about</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"></h1>
+  
+
+      
+      <time datetime="2015-03-25T07:26:58.953Z">3月 25 2015</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="building_a_suggestion_table_for_SearchView">building a suggestion table for SearchView</h1>
+<p>The system understands several columns, but only two are required.</p>
+<p><code>_ID</code>(required)<br>A unique integer row ID for each suggestion.<br>required for a ListView</p>
+<p><code>SUGGEST_COLUMN_TEXT_1</code>(required)<br>A string<br>required for presenting as a suggestion.</p>
+<p><code>SUGGEST_COLUMN_TEXT_2</code><br>A string.<br>that is for two-line format suggestion as a second, smaller line.</p>
+<p><code>SUGGEST_COLUMN_ICON_1</code><br>A drawable resource, content, or file URI string.<br>icon-plus-text format suggestion, with the drawable icon on the left side.</p>
+<p><code>SUGGEST_COLUMN_ICON_2</code><br>A drawable resource, content, or file URI string.<br>icon-plus-text format suggestion, with the drawable icon on the right side.</p>
+<p><code>SUGGEST_COLUMN_INTENT_ACTION</code><br>An intent action string.<br>in searchable configuration, <em>android:searchSuggestIntentAction</em> field is the default value for all suggestions.</p>
+<p><code>SUGGEST_COLUMN_INTENT_DATA</code><br>A data URI string.<br>in searchable configuration, <em>android:searchSuggestIntentData</em> field is the default value for all suggestions.</p>
+<p><code>SUGGEST_COLUMN_INTENT_DATA_ID</code><br>A URI path string.<br>“/” and this value is appended to the data field in the intent.</p>
+<p><code>SUGGEST_COLUMN_INTENT_EXTRA_DATA</code><br>Arbitrary data.<br>This column allows suggestions to provide additional data that is included as an extra in the intent’s EXTRA_DATA_KEY key.</p>
+<p><code>SUGGEST_COLUMN_QUERY</code><br>required if suggestion’s action is ACTION_SEARCH, optional otherwise.<br>This is the data that is used when forming the suggestion’s query, included as an extra in the intent’s QUERY key.</p>
+<p><code>SUGGEST_COLUMN_SHORTCUT_ID</code><br>Only used when providing suggestions for Quick Search Box.</p>
+<p><code>SUGGEST_COLUMN_SPINNER_WHILE_REFRESHING</code><br>Only used when providing suggestions for Quick Search Box.</p>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+      
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"null"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 ming huang
+  
+  </p>
+  <p>
+    Theme By <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>
