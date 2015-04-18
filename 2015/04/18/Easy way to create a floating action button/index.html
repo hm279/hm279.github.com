@@ -8,7 +8,7 @@
   
   <meta name="description" content="Easy way to create a floating action button
 first of all
-This method may lead to bug in Android Lollipop, no otherBug is here:Try this may cancel the ">
+This method may lead to bug in Android Lollipop, no otherBug shows on githubTry this may canc">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -58,14 +58,14 @@ This method may lead to bug in Android Lollipop, no otherBug is here:Try this ma
   
 
       
-      <time datetime="2015-04-18T13:29:44.117Z">4月 18 2015</time>
+      <time datetime="2015-04-18T13:34:26.167Z">4月 18 2015</time>
       
     </header>
     <div class="entry">
       
         <h1 id="Easy_way_to_create_a_floating_action_button">Easy way to create a floating action button</h1>
 <h2 id="first_of_all">first of all</h2>
-<p><strong>This method may lead to bug in Android Lollipop, no other</strong><br>Bug is here:<br><img src="https://github.com/hm279/fab_shadow/blob/master/wtf.gif" alt="bug!"><br>Try this may cancel the bug:</p>
+<p><strong>This method may lead to bug in Android Lollipop, no other</strong><br>Bug shows on <a href="https://github.com/hm279/fab_shadow" target="_blank" rel="external">github</a><br>Try this may cancel the bug:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span>() {</div><div class="line">    <span class="keyword">super</span>.onDestroy(); </div><div class="line">    <span class="javadoc">/**</span></div><div class="line">     * Looks like this will cause the gc. Call System.gc() not work.</div><div class="line">     */</div><div class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.KITKAT) {</div><div class="line">        drawableToBitmap(fab.getBackground());</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">public</span> Bitmap <span class="title">drawableToBitmap</span> (Drawable drawable) {</div><div class="line">    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),</div><div class="line">            drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">    Canvas canvas = <span class="keyword">new</span> Canvas(bitmap);</div><div class="line">    drawable.setBounds(<span class="number">0</span>, <span class="number">0</span>, canvas.getWidth(), canvas.getHeight());</div><div class="line">    drawable.draw(canvas);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> bitmap;</div><div class="line">}</div></pre></td></tr></table></figure>
 
 <h2 id="now_introducing_how_to_realize_an_FAB">now introducing how to realize an FAB</h2>
