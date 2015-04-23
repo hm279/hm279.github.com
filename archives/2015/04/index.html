@@ -54,6 +54,35 @@
     <header>
       
   
+    <h1 class="title"><a href="/2015/04/23/SQLite-fts3/"></a></h1>
+  
+
+      
+      <time datetime="2015-04-23T14:05:30.692Z">4月 23 2015</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="Should_SQLite_fts3_contains_non-TEXT_data?">Should SQLite fts3 contains non-TEXT data?</h1>
+<p>After research, It seems shouldn’t.<br>SQLite virtual table fts3 seems treat non-TEXT data like INTEGER BLOB as TEXT, and build full-text index for them too.(Is this right?)</p>
+<p>Any way I think we should move the non-TEXT data and no need searchable TEXT data to an ordinary table. Using INNER JOIN to query when necessary.</p>
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+<article class="post">
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2015/04/19/Scan qrcode to clipboard/"></a></h1>
   
 
