@@ -51,6 +51,44 @@
     <header>
       
   
+    <h1 class="title"><a href="/2015/04/26/set divider for special listview items/"></a></h1>
+  
+
+      
+      <time datetime="2015-04-25T17:40:23.761Z">4月 26 2015</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="set_divider_for_special_listview_items">set divider for special listview items</h1>
+<p>Sometimes, I want to set divider for special listview items, but I don’t want add extra view to display as divider.<br>Required :</p>
+<ul>
+<li>your listview item do not have a background </li>
+</ul>
+<p>You just need to set listview item’s background to a drawable, which only include a line in its top(or bottom). ClipDrawable can create one for you.</p>
+<p><hr><br>Example is here:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> View <span class="title">getView</span>(<span class="keyword">int</span> position, View convertView, ViewGroup parent) { </div><div class="line">    View view;</div><div class="line">    <span class="keyword">if</span> (convertView != <span class="keyword">null</span>) {</div><div class="line">        view = convertView;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        view = inflater.inflate(R.layout.listview_item, parent, <span class="keyword">false</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> (<span class="comment">/* need to set divider */</span>) { </div><div class="line">        ClipDrawable drawable = (ClipDrawable) resources.getDrawable(R.drawable.divider);</div><div class="line">        <span class="comment">//set divider's height to 1dp, suppose view's height is 56dp</span></div><div class="line">        <span class="keyword">int</span> level = <span class="number">10000</span> / <span class="number">56</span>;</div><div class="line">        drawable.setLevel(level);</div><div class="line">        view.setBackground(drawable);</div><div class="line">    }</div><div class="line">    <span class="comment">//other operation </span></div><div class="line">    <span class="comment">//...</span></div><div class="line">    <span class="keyword">return</span> view;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>res/drawable/divider.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">clip</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attribute">android:drawable</span>=<span class="value">"@color/divider_color"</span></div><div class="line">    <span class="attribute">android:clipOrientation</span>=<span class="value">"vertical"</span></div><div class="line">    <span class="attribute">android:gravity</span>=<span class="value">"top"</span> /&gt;</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2015/04/23/SQLite-fts3/"></a></h1>
   
 
@@ -373,37 +411,6 @@
 <p><a href="http://www.onicos.com/staff/iz/formats/gzip.html" target="_blank" rel="external">Here</a> are the gzip format   </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">Byte <span class="keyword">order</span>: Little-endian</div><div class="line">    Offset   Length   Contents</div><div class="line"><span class="number">0</span>      <span class="number">2</span> bytes  magic header  <span class="number">0</span>x1f, <span class="number">0</span>x8b (\<span class="number">037</span> \<span class="number">213</span>)  </div><div class="line"><span class="number">2</span>      <span class="number">1</span> byte   compression <span class="function"><span class="keyword">method</span></span></div><div class="line">                0: store (copied)</div><div class="line">                <span class="number">1</span>: compress</div><div class="line">                <span class="number">2</span>: pack</div><div class="line">                <span class="number">3</span>: lzh</div><div class="line">                <span class="number">4</span>..<span class="number">7</span>: reserved</div><div class="line">                <span class="number">8</span>: deflate</div><div class="line"><span class="number">3</span>      <span class="number">1</span> byte   <span class="keyword">flags</span></div><div class="line">                bit <span class="number">0</span> <span class="keyword">set</span>: file probably ascii text</div><div class="line">                bit <span class="number">1</span> <span class="keyword">set</span>: continuation <span class="keyword">of</span> multi-part gzip file, part number present</div><div class="line">                bit <span class="number">2</span> <span class="keyword">set</span>: extra field present</div><div class="line">                bit <span class="number">3</span> <span class="keyword">set</span>: original file name present</div><div class="line">                bit <span class="number">4</span> <span class="keyword">set</span>: file comment present</div><div class="line">                bit <span class="number">5</span> <span class="keyword">set</span>: file <span class="keyword">is</span> encrypted, encryption header present</div><div class="line">                bit <span class="number">6</span>,<span class="number">7</span>:   reserved</div><div class="line"><span class="number">4</span>      <span class="number">4</span> bytes  file modification time <span class="keyword">in</span> Unix format</div><div class="line"><span class="number">8</span>      <span class="number">1</span> byte   extra <span class="keyword">flags</span> (depend <span class="keyword">on</span> compression <span class="function"><span class="keyword">method</span>)</span></div><div class="line">9      1 <span class="title">byte</span>   <span class="title">OS</span> <span class="title">type</span></div><div class="line"></div><div class="line">[</div><div class="line">            2 <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">part</span> <span class="title">number</span> <span class="params">(second part=1)</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            2 <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">extra</span> <span class="title">field</span> <span class="title">length</span> <span class="params">(e)</span></div><div class="line">            <span class="params">(e)</span><span class="title">bytes</span>  <span class="title">optional</span> <span class="title">extra</span> <span class="title">field</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">original</span> <span class="title">file</span> <span class="title">name</span>, <span class="title">zero</span> <span class="title">terminated</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">file</span> <span class="title">comment</span>, <span class="title">zero</span> <span class="title">terminated</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            12 <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">encryption</span> <span class="title">header</span></div><div class="line">]?</div><div class="line"></div><div class="line"><span class="title">bytes</span>  <span class="title">compressed</span> <span class="title">data</span></div><div class="line"></div><div class="line">4 <span class="title">bytes</span>  <span class="title">crc32</span></div><div class="line">4 <span class="title">bytes</span>  <span class="title">uncompressed</span> <span class="title">input</span> <span class="title">size</span> <span class="title">modulo</span> 2^32</div></pre></td></tr></table></figure>
 
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2015/03/25/goodPaperForFTP/"></a></h1>
-  
-
-      
-      <time datetime="2015-03-25T07:26:59.000Z">3月 25 2015</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="I_just_want_to_speed_up_the_download/upload_ratio_in_LAN">I just want to speed up the download/upload ratio in LAN</h1>
-<h2 id="something_is_useful_for_me_to_wirte_down">something is useful for me to wirte down</h2>
-<p><a href="http://stackoverflow.com/questions/3651737/why-the-odd-performance-curve-differential-between-bytebuffer-allocate-and-byt" target="_blank" rel="external">How ByteBuffer works and why Direct (Byte)Buffers are the only truly useful now</a><br><a href="http://nadeausoftware.com/articles/2008/02/java_tip_how_read_files_quickly#FileChannelwithdirectByteBufferandbytearraygets" target="_blank" rel="external">Java tip: How to read files quickly</a><br><a href="http://stackoverflow.com/questions/7651528/java-nio-transferfrom-until-end-of-stream" target="_blank" rel="external">Java NIO: transferFrom until end of stream</a></p>
-<h2 id="Google_‘fastest_way_to_copy_file_java’_to_find_out">Google ‘fastest way to copy file java’ to find out</h2>
-<p><a href="http://baptiste-wicht.com/posts/2010/08/file-copy-in-java-benchmark.html" target="_blank" rel="external">File copy in Java - Benchmark</a></p>
 
       
     </div>
