@@ -54,6 +54,38 @@
     <header>
       
   
+    <h1 class="title"><a href="/2015/05/07/this-handler-class-should-be-static-or-leaks-might-occur/"></a></h1>
+  
+
+      
+      <time datetime="2015-05-07T09:44:54.634Z">5月 7 2015</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="this_handler_class_should_be_static_or_leaks_might_occur">this handler class should be static or leaks might occur</h1>
+<p><a href="http://stackoverflow.com/questions/11407943/this-handler-class-should-be-static-or-leaks-might-occur-incominghandler" target="_blank" rel="external">stackoverflow answer</a></p>
+<p>As messages contain target handler.<br>The non-ui-thread contains the ui-thread’s handler. so this handler cannot be garbage collected.</p>
+<p>if non-ui-thread contains any objects of the ui-thread, I should make them to a <code>WeakReference</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//define</span></div><div class="line">WeakReference&lt;Object&gt; objectReference = <span class="keyword">new</span> WeakReference&lt;&gt;(object);</div><div class="line"></div><div class="line"><span class="comment">//use</span></div><div class="line">Object object = objectReference.get();</div><div class="line"><span class="keyword">if</span> (object != <span class="keyword">null</span>) {</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+<article class="post">
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2015/04/26/set divider for special listview items/"></a></h1>
   
 
@@ -376,44 +408,6 @@
 
 <pre><code><span class="operator"><span class="keyword">Set</span> left_drawerlayout’s background <span class="keyword">to</span> semi-transparent, <span class="keyword">and</span> <span class="keyword">set</span> drawer_listview’s background <span class="keyword">to</span> non-transparent.</span>
 </code></pre><p>See the example.</p>
-
-      
-    </div>
-    
-      
-    
-  </div>
-</article>
-
-
-
-
-<article class="post">
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2015/03/25/GZIPInputStream.bug/"></a></h1>
-  
-
-      
-      <time datetime="2015-03-25T07:26:59.013Z">3月 25 2015</time>
-      
-    </header>
-    <div class="entry">
-      
-        <h1 id="One_bug_of_GZIPInputStream_in_android_5-0">One bug of GZIPInputStream in android 5.0</h1>
-<p>When I use GZIPInputStream to decompress gzip file in my app, I found that it work on android 4.3, but not work on android 5.0.2.<br>It throws exception like that:<br><code>Caused by: java.util.zip.DataFormatException: invalid distance too far back</code><br>Then I look at the gzip format and the GZIPInputStream source code.<br>I found out that the mistake was in:<br><code>int length = Memory.peekShort(scratch, 0, ByteOrder.LITTLE_ENDIAN) &amp; 0xffff;</code><br>It should be:<br><code>int length = Memory.peekShort(header, 0, ByteOrder.LITTLE_ENDIAN) &amp; 0xffff;</code></p>
-<p>From the gzip format we can know, if the extra field bit was set, Then it need to read<br><em>2 bytes optional extra field length</em> and <em>length bytes optional extra field</em><br>The following code segment read 2 bytes to get length.   </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ((flags & FEXTRA) != <span class="number">0</span>) {</div><div class="line">    Streams.readFully(in, header, <span class="number">0</span>, <span class="number">2</span>);</div><div class="line">    <span class="keyword">if</span> (hcrc) {</div><div class="line">        crc.update(header, <span class="number">0</span>, <span class="number">2</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">int</span> length = Memory.peekShort(scratch, <span class="number">0</span>, ByteOrder.LITTLE_ENDIAN) & <span class="number">0xffff</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>So<br><em>Streams.readFully(in, header, 0, 2);</em><br>read 2 bytes, and<br><em>int length = Memory.peekShort(scratch, 0, ByteOrder.LITTLE_ENDIAN) &amp; 0xffff;</em><br>peek the length.<br>Haha, <code>scratch</code>—-&gt; <code>header</code></p>
-<p>Here are some GZIPInputStream.java source code, the parseGzipHeader() method.   </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parseGzipHeader</span>(InputStream in, <span class="keyword">byte</span>[] header,</div><div class="line">        CRC32 crc, <span class="keyword">byte</span>[] scratch) <span class="keyword">throws</span> IOException {</div><div class="line">    <span class="keyword">final</span> <span class="keyword">byte</span> flags = header[<span class="number">3</span>];</div><div class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> hcrc = (flags & FHCRC) != <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (hcrc) {</div><div class="line">        crc.update(header, <span class="number">0</span>, header.length);</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> ((flags & FEXTRA) != <span class="number">0</span>) {</div><div class="line">        Streams.readFully(in, header, <span class="number">0</span>, <span class="number">2</span>);</div><div class="line">        <span class="keyword">if</span> (hcrc) {</div><div class="line">            crc.update(header, <span class="number">0</span>, <span class="number">2</span>);</div><div class="line">        }</div><div class="line">        <span class="keyword">int</span> length = Memory.peekShort(scratch, <span class="number">0</span>, ByteOrder.LITTLE_ENDIAN) & <span class="number">0xffff</span>;</div><div class="line">        <span class="keyword">while</span> (length &gt; <span class="number">0</span>) {</div><div class="line">            <span class="keyword">int</span> max = length &gt; scratch.length ? scratch.length : length;</div><div class="line">            <span class="keyword">int</span> result = in.read(scratch, <span class="number">0</span>, max);</div><div class="line">            <span class="keyword">if</span> (result == -<span class="number">1</span>) {</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> EOFException();</div><div class="line">            }</div><div class="line">            <span class="keyword">if</span> (hcrc) {</div><div class="line">                crc.update(scratch, <span class="number">0</span>, result);</div><div class="line">            }</div><div class="line">            length -= result;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> ((flags & FNAME) != <span class="number">0</span>) {</div><div class="line">        readZeroTerminated(in, crc, hcrc);</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> ((flags & FCOMMENT) != <span class="number">0</span>) {</div><div class="line">        readZeroTerminated(in, crc, hcrc);</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> (hcrc) {</div><div class="line">        Streams.readFully(in, header, <span class="number">0</span>, <span class="number">2</span>);</div><div class="line">        <span class="keyword">short</span> crc16 = Memory.peekShort(scratch, <span class="number">0</span>, ByteOrder.LITTLE_ENDIAN);</div><div class="line">        <span class="keyword">if</span> ((<span class="keyword">short</span>) crc.getValue() != crc16) {</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"CRC mismatch"</span>);</div><div class="line">        }</div><div class="line">        crc.reset();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p><a href="http://www.onicos.com/staff/iz/formats/gzip.html" target="_blank" rel="external">Here</a> are the gzip format   </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">Byte <span class="keyword">order</span>: Little-endian</div><div class="line">    Offset   Length   Contents</div><div class="line"><span class="number">0</span>      <span class="number">2</span> bytes  magic header  <span class="number">0</span>x1f, <span class="number">0</span>x8b (\<span class="number">037</span> \<span class="number">213</span>)  </div><div class="line"><span class="number">2</span>      <span class="number">1</span> byte   compression <span class="function"><span class="keyword">method</span></span></div><div class="line">                0: store (copied)</div><div class="line">                <span class="number">1</span>: compress</div><div class="line">                <span class="number">2</span>: pack</div><div class="line">                <span class="number">3</span>: lzh</div><div class="line">                <span class="number">4</span>..<span class="number">7</span>: reserved</div><div class="line">                <span class="number">8</span>: deflate</div><div class="line"><span class="number">3</span>      <span class="number">1</span> byte   <span class="keyword">flags</span></div><div class="line">                bit <span class="number">0</span> <span class="keyword">set</span>: file probably ascii text</div><div class="line">                bit <span class="number">1</span> <span class="keyword">set</span>: continuation <span class="keyword">of</span> multi-part gzip file, part number present</div><div class="line">                bit <span class="number">2</span> <span class="keyword">set</span>: extra field present</div><div class="line">                bit <span class="number">3</span> <span class="keyword">set</span>: original file name present</div><div class="line">                bit <span class="number">4</span> <span class="keyword">set</span>: file comment present</div><div class="line">                bit <span class="number">5</span> <span class="keyword">set</span>: file <span class="keyword">is</span> encrypted, encryption header present</div><div class="line">                bit <span class="number">6</span>,<span class="number">7</span>:   reserved</div><div class="line"><span class="number">4</span>      <span class="number">4</span> bytes  file modification time <span class="keyword">in</span> Unix format</div><div class="line"><span class="number">8</span>      <span class="number">1</span> byte   extra <span class="keyword">flags</span> (depend <span class="keyword">on</span> compression <span class="function"><span class="keyword">method</span>)</span></div><div class="line">9      1 <span class="title">byte</span>   <span class="title">OS</span> <span class="title">type</span></div><div class="line"></div><div class="line">[</div><div class="line">            2 <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">part</span> <span class="title">number</span> <span class="params">(second part=1)</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            2 <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">extra</span> <span class="title">field</span> <span class="title">length</span> <span class="params">(e)</span></div><div class="line">            <span class="params">(e)</span><span class="title">bytes</span>  <span class="title">optional</span> <span class="title">extra</span> <span class="title">field</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">original</span> <span class="title">file</span> <span class="title">name</span>, <span class="title">zero</span> <span class="title">terminated</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">file</span> <span class="title">comment</span>, <span class="title">zero</span> <span class="title">terminated</span></div><div class="line">]?</div><div class="line"></div><div class="line">[</div><div class="line">            12 <span class="title">bytes</span>  <span class="title">optional</span> <span class="title">encryption</span> <span class="title">header</span></div><div class="line">]?</div><div class="line"></div><div class="line"><span class="title">bytes</span>  <span class="title">compressed</span> <span class="title">data</span></div><div class="line"></div><div class="line">4 <span class="title">bytes</span>  <span class="title">crc32</span></div><div class="line">4 <span class="title">bytes</span>  <span class="title">uncompressed</span> <span class="title">input</span> <span class="title">size</span> <span class="title">modulo</span> 2^32</div></pre></td></tr></table></figure>
-
 
       
     </div>

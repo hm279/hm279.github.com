@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hm279 › 归档：2015/5</title>
+  <meta name="author" content="ming huang">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="hm279"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="hm279" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">hm279</a></h1>
+  <h2 id="header-h2">Hail Open Source</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">home</a></li>
+      
+      <li><a href="/archives">archives</a></li>
+      
+      <li><a href="https://github.com/hm279">github</a></li>
+      
+      <li><a href="/about/about.html">about</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">2015/5</h2>
+
+
+<article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/05/07/this-handler-class-should-be-static-or-leaks-might-occur/"></a></h1>
+  
+
+      
+      <time datetime="2015-05-07T09:44:54.634Z">5月 7 2015</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="this_handler_class_should_be_static_or_leaks_might_occur">this handler class should be static or leaks might occur</h1>
+<p><a href="http://stackoverflow.com/questions/11407943/this-handler-class-should-be-static-or-leaks-might-occur-incominghandler" target="_blank" rel="external">stackoverflow answer</a></p>
+<p>As messages contain target handler.<br>The non-ui-thread contains the ui-thread’s handler. so this handler cannot be garbage collected.</p>
+<p>if non-ui-thread contains any objects of the ui-thread, I should make them to a <code>WeakReference</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//define</span></div><div class="line">WeakReference&lt;Object&gt; objectReference = <span class="keyword">new</span> WeakReference&lt;&gt;(object);</div><div class="line"></div><div class="line"><span class="comment">//use</span></div><div class="line">Object object = objectReference.get();</div><div class="line"><span class="keyword">if</span> (object != <span class="keyword">null</span>) {</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+<div class="pagination">
+  <table width='100%'>
+    <tbody>
+    <tr>
+      <td width='120' align='left'>
+        
+      </td>
+      <td width='auto' align='center'>
+          <a href="/archives/">文章归档</a>
+      </td>
+      <td width='120' align='right'>
+        
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 ming huang
+  
+  </p>
+  <p>
+    Theme By <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>
