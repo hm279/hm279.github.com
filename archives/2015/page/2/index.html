@@ -54,6 +54,84 @@
     <header>
       
   
+    <h1 class="title"><a href="/2015/03/25/md-navigation-drawer/"></a></h1>
+  
+
+      
+      <time datetime="2015-03-25T07:26:59.020Z">3月 25 2015</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="Material_Design’s_Navigation_Drawer">Material Design’s Navigation Drawer</h1>
+<p>Excellent answers in stackoverflow</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/26745300/navigation-drawer-semi-transparent-over-status-bar-not-working" target="_blank" rel="external">0</a></li>
+<li><a href="http://stackoverflow.com/questions/26440879/how-do-i-use-drawerlayout-to-display-over-the-actionbar-toolbar-and-under-the-st" target="_blank" rel="external">1</a></li>
+<li><a href="http://stackoverflow.com/questions/26913770/make-navigation-drawer-draw-behind-status-bar" target="_blank" rel="external">2</a></li>
+</ul>
+<h2 id="1-_An_Example_of_DrawerLayout">1. An Example of DrawerLayout</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">android.support.v4.widget.DrawerLayout</span></span></div><div class="line">    <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attribute">android:id</span>=<span class="value">"@+id/drawer_layout"</span></div><div class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></div><div class="line">    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></div><div class="line">    &gt;</div><div class="line"></div><div class="line">    <span class="comment">&lt;!--content--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span></div><div class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></div><div class="line">        <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span></div><div class="line">        <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></div><div class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/main_content"</span></div><div class="line">        &gt;</div><div class="line">        <span class="comment">&lt;!--Toolbar--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span></div><div class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span></div><div class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></div><div class="line">            <span class="attribute">android:background</span>=<span class="value">"?attr/colorPrimary"</span></div><div class="line">            <span class="attribute">android:minHeight</span>=<span class="value">"?attr/actionBarSize"</span>/&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="title">ListView</span></span></div><div class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span></div><div class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></div><div class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/result_listView"</span></div><div class="line">            /&gt;</div><div class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!--drawer navigation--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span></div><div class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"320dp"</span></div><div class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></div><div class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/left_drawerLayout"</span></div><div class="line">        <span class="attribute">android:layout_gravity</span>=<span class="value">"start"</span></div><div class="line">        <span class="attribute">android:background</span>=<span class="value">"#4DFFFFFF"</span></div><div class="line">        <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></div><div class="line">        &gt;</div><div class="line">        <span class="tag">&lt;<span class="title">ListView</span></span></div><div class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/drawer_listView"</span></div><div class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></div><div class="line">            <span class="attribute">android:choiceMode</span>=<span class="value">"singleChoice"</span></div><div class="line">            <span class="attribute">android:divider</span>=<span class="value">"@null"</span></div><div class="line">            <span class="attribute">android:background</span>=<span class="value">"?attr/android:windowBackground"</span></div><div class="line">            /&gt;</div><div class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">android.support.v4.widget.DrawerLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<h2 id="2-_how_to_set_the_drawer_navigation_semi-transparent_in_status_bar">2. how to set the drawer navigation semi-transparent in status bar</h2>
+<p>Setting <code>android:fitsSystemWindows=&quot;true&quot;</code> let the DrawerLayout expand to status bar and navigation bar.<br>The DrawerLayout is a layer under the status bar and navigation bar.</p>
+<p>All the following <code>&lt;item&gt;&lt;/item&gt;</code> are placed in theme v21/styles.xml.</p>
+<ul>
+<li>set the statusbar color</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="property">item</span> <span class="property">name</span>=”android:statusBarColor”&gt;@your color&lt;/<span class="property">item</span>&gt;</div><div class="line"><span class="keyword">or</span></div><div class="line">getWindow().setStatusBarColor(your color);</div></pre></td></tr></table></figure>
+
+<ul>
+<li>set the navigation color</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="property">item</span> <span class="property">name</span>=”android:navigationBarColor”&gt;@your color&lt;/<span class="property">item</span>&gt;</div><div class="line"><span class="keyword">or</span></div><div class="line">getWindow().setNavigationBarColor(your color);</div></pre></td></tr></table></figure>
+
+<ul>
+<li>change the statusbar color to semi-transparent</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="property">item</span> <span class="property">name</span>=”android:windowTranslucentStatus”&gt;<span class="constant">true</span>&lt;/<span class="property">item</span>&gt;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>change the navigationbar color to semi-transparent</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="property">item</span> <span class="property">name</span>=”android:windowTranslucentNavigation”&gt;<span class="constant">true</span>&lt;/<span class="property">item</span>&gt;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>change the drawerlayout’s background color in the statusbar</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">drawerLayout </span>=<span class="string"> (DrawerLayout) findViewById(R.id.drawer_layout);</span></div><div class="line">drawerLayout.setStatusBarBackgroundColor(your color);</div></pre></td></tr></table></figure>
+
+<h3 id="2-1-_One_Way">2.1. One Way</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="property">item</span> <span class="property">name</span>=”android:windowiDrawsSystemBarBackgrounds”&gt;<span class="constant">true</span>&lt;/<span class="property">item</span>&gt;</div><div class="line">&lt;<span class="property">item</span> <span class="property">name</span>=”android:windowTranslucentStatus”&gt;<span class="constant">true</span>&lt;/<span class="property">item</span>&gt;</div></pre></td></tr></table></figure>
+
+<p>This will chang the hole app’s statusbar to semi-transparent.</p>
+<h3 id="2-2-_Another_Way">2.2. Another Way</h3>
+<p>The drawerlayout example above is using this method.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="property">item</span> <span class="property">name</span>=”android:windowiDrawsSystemBarBackgrounds”&gt;<span class="constant">true</span>&lt;/<span class="property">item</span>&gt;</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);</div><div class="line">drawerLayout.setStatusBarBackgroundColor(your <span class="keyword">color</span>);</div><div class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {</div><div class="line">    getWindow().setStatusBarColor(<span class="number">0x0</span>); <span class="comment">//set to transparent</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<pre><code><span class="operator"><span class="keyword">Set</span> left_drawerlayout’s background <span class="keyword">to</span> semi-transparent, <span class="keyword">and</span> <span class="keyword">set</span> drawer_listview’s background <span class="keyword">to</span> non-transparent.</span>
+</code></pre><p>See the example.</p>
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+<article class="post">
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2015/03/25/GZIPInputStream.bug/"></a></h1>
   
 
